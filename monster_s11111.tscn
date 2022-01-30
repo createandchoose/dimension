@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://monster_s.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://monster1.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Skin" id=12]
+
+[sub_resource type="Shader" id=13]
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[node name="monster_s" type="MeshInstance"]
+transform = Transform( -1.37885e-07, 0, 3.15444, 0, 3.15444, 0, -3.15444, 0, -1.37885e-07, -4.89033, 2.42155, 15.5187 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 1 )
+skin = SubResource( 12 )
+material/0 = SubResource( 14 )

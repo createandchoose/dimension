@@ -1,0 +1,694 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://data/textures/grid.png" type="Texture" id=1]
+[ext_resource path="res://data/scenes/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pink.png" type="Texture" id=3]
+[ext_resource path="res://data/scenes/fade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://monster_s.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://data/scenes/deads.gd" type="Script" id=6]
+[ext_resource path="res://monster1.png" type="Texture" id=7]
+[ext_resource path="res://data/textures/explosion.png" type="Texture" id=8]
+[ext_resource path="res://data/audios/barrel/impact.ogg" type="AudioStream" id=9]
+[ext_resource path="res://data/audios/barrel/explosion.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Environment" id=7]
+background_mode = 1
+background_color = Color( 0.0352941, 0.0117647, 0.0627451, 1 )
+ambient_light_color = Color( 0.0352941, 0.0117647, 0.0627451, 1 )
+ambient_light_energy = 16.0
+fog_enabled = true
+fog_color = Color( 0.0352941, 0.0117647, 0.0627451, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 500, 2, 500 )
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="Skin" id=12]
+
+[sub_resource type="Shader" id=13]
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_texture = ExtResource( 3 )
+emission_enabled = true
+emission = Color( 1, 0, 0.576471, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+anisotropy_enabled = true
+anisotropy = 0.0
+
+[sub_resource type="PlaneMesh" id=16]
+
+[sub_resource type="ShaderMaterial" id=17]
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.0880229, 0.49879, 0.80379 )
+
+[sub_resource type="Gradient" id=21]
+offsets = PoolRealArray( 0, 0.503704, 1 )
+colors = PoolColorArray( 0.454902, 0.392157, 0.392157, 0, 0, 0, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+
+[sub_resource type="Curve" id=23]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 23 )
+
+[sub_resource type="Curve" id=24]
+max_value = 10.0
+bake_resolution = 500
+_data = [ Vector2( 0, 9.47727 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=25]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 5, 0 )
+linear_accel = 3.0
+linear_accel_random = 0.2
+linear_accel_curve = SubResource( 6 )
+scale = 0.1
+scale_random = 1.0
+scale_curve = SubResource( 25 )
+color_ramp = SubResource( 22 )
+
+[sub_resource type="SpatialMaterial" id=27]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 0.588235 )
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="QuadMesh" id=28]
+material = SubResource( 27 )
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="ParticlesMaterial" id=29]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+linear_accel = 3.0
+linear_accel_random = 0.2
+linear_accel_curve = SubResource( 6 )
+scale = 0.1
+scale_random = 1.0
+scale_curve = SubResource( 25 )
+color_ramp = SubResource( 22 )
+
+[sub_resource type="SpatialMaterial" id=30]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 0.588235 )
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="QuadMesh" id=31]
+material = SubResource( 30 )
+
+[sub_resource type="Gradient" id=32]
+colors = PoolColorArray( 0, 0, 0, 1, 0.501961, 0.501961, 0.501961, 0 )
+
+[sub_resource type="GradientTexture" id=33]
+gradient = SubResource( 32 )
+
+[sub_resource type="ParticlesMaterial" id=34]
+render_priority = 1
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+angle = -720.0
+angle_random = 1.0
+scale_curve = SubResource( 25 )
+color_ramp = SubResource( 33 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.588235 )
+albedo_texture = ExtResource( 8 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 1, 0.333333, 0, 1 )
+emission_energy = 10.0
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = ExtResource( 8 )
+
+[sub_resource type="QuadMesh" id=35]
+material = SubResource( 18 )
+size = Vector2( 0.4, 0.4 )
+
+[sub_resource type="SphereShape" id=36]
+radius = 6.0
+
+[node name="main" type="Node"]
+
+[node name="post_processing" type="Spatial" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="post_processing"]
+transform = Transform( 0.707107, 0.612372, -0.353553, 0, 0.5, 0.866026, 0.707107, -0.612372, 0.353553, -0.382269, 4.18893, 1.79617 )
+light_color = Color( 0, 0.227451, 1, 1 )
+light_energy = 6.697
+omni_range = 76.809
+
+[node name="sun" type="DirectionalLight" parent="post_processing"]
+transform = Transform( 0.706585, 0.613903, -0.351937, -0.00151692, 0.498661, 0.866796, 0.707626, -0.611931, 0.353278, 0, 0, 0 )
+visible = false
+light_color = Color( 0.686275, 1, 0, 1 )
+shadow_enabled = true
+directional_shadow_blend_splits = true
+
+[node name="environment" type="WorldEnvironment" parent="post_processing"]
+environment = SubResource( 7 )
+
+[node name="character" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, 10 )
+
+[node name="fade" parent="." instance=ExtResource( 4 )]
+color = Color( 0, 0, 0, 1 )
+
+[node name="scenario" type="Spatial" parent="."]
+
+[node name="terrain" type="StaticBody" parent="scenario" groups=["concrete"]]
+transform = Transform( 1.5902, 0, 0, 0, 1.00335, 0, 0, 0, 1.15914, 0, 0, 0 )
+
+[node name="mesh" type="MeshInstance" parent="scenario/terrain"]
+transform = Transform( 0.185943, 0, 0, 0, 1, 0, 0, 0, 0.259174, -0.0358462, -0.01824, 0.0206671 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="scenario/terrain"]
+transform = Transform( 47.4815, 0, 0, 0, 1, 0, 0, 0, 63.7876, 0, 0.91642, 0 )
+shape = SubResource( 8 )
+
+[node name="KinematicBody2" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, -34.0801, 1.05399, 94.2514 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody2"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody2/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody2"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody2"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody2"]
+
+[node name="ex" type="Particles" parent="KinematicBody2/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody2/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody2/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody2"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody2/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody2/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody2"]
+
+[node name="timer" type="Timer" parent="KinematicBody2/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody2/explosion"]
+shape = SubResource( 36 )
+
+[node name="KinematicBody3" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, -34.0801, 1.05399, 153.155 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody3"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody3/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody3"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody3"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody3"]
+
+[node name="ex" type="Particles" parent="KinematicBody3/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody3/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody3/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody3"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody3/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody3/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody3"]
+
+[node name="timer" type="Timer" parent="KinematicBody3/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody3/explosion"]
+shape = SubResource( 36 )
+
+[node name="KinematicBody4" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, 4.36673, 1.05399, 94.2514 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody4"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody4/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody4"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody4"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody4"]
+
+[node name="ex" type="Particles" parent="KinematicBody4/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody4/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody4/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody4"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody4/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody4/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody4"]
+
+[node name="timer" type="Timer" parent="KinematicBody4/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody4/explosion"]
+shape = SubResource( 36 )
+
+[node name="KinematicBody5" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, 4.36673, 1.05399, 153.155 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody5"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody5/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody5"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody5"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody5"]
+
+[node name="ex" type="Particles" parent="KinematicBody5/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody5/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody5/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody5"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody5/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody5/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody5"]
+
+[node name="timer" type="Timer" parent="KinematicBody5/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody5/explosion"]
+shape = SubResource( 36 )
+
+[node name="KinematicBody6" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, 40.9611, 1.05399, 94.2514 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody6"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody6/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody6"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody6"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody6"]
+
+[node name="ex" type="Particles" parent="KinematicBody6/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody6/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody6/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody6"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody6/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody6/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody6"]
+
+[node name="timer" type="Timer" parent="KinematicBody6/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody6/explosion"]
+shape = SubResource( 36 )
+
+[node name="KinematicBody7" type="KinematicBody" parent="."]
+transform = Transform( 4.61071, 0, 0, 0, 4.61071, 0, 0, 0, 4.61071, 40.9611, 1.05399, 153.155 )
+script = ExtResource( 6 )
+
+[node name="monster_s" type="MeshInstance" parent="KinematicBody7"]
+transform = Transform( -7.19244e-08, 0, 1.64544, 0, 1.64544, 0, -1.64544, 0, -7.19244e-08, 0.0116593, 3.25544, -0.0862486 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 5 )
+skin = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody7/monster_s"]
+transform = Transform( -1.25852e-08, 0.607741, -3.05894e-08, 0, 4.53837e-09, 0.090167, 0.287915, 2.65652e-08, -1.3371e-15, 0.303255, 0.513497, -0.0070858 )
+material_override = SubResource( 15 )
+mesh = SubResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody7"]
+transform = Transform( 7.38023, 0, 0, 0, 1.28866, 0, 0, 0, 1, 0, 3.92693, 0 )
+shape = SubResource( 10 )
+
+[node name="timer" type="Timer" parent="KinematicBody7"]
+wait_time = 4.0
+one_shot = true
+
+[node name="effects" type="Spatial" parent="KinematicBody7"]
+
+[node name="ex" type="Particles" parent="KinematicBody7/effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource( 26 )
+draw_pass_1 = SubResource( 28 )
+
+[node name="plo" type="Particles" parent="KinematicBody7/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 31 )
+
+[node name="sion" type="Particles" parent="KinematicBody7/effects"]
+cast_shadow = 0
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
+
+[node name="audios" type="Spatial" parent="KinematicBody7"]
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="KinematicBody7/audios"]
+stream = ExtResource( 10 )
+unit_db = 80.0
+
+[node name="impact" type="AudioStreamPlayer3D" parent="KinematicBody7/audios"]
+stream = ExtResource( 9 )
+unit_db = 80.0
+
+[node name="explosion" type="Area" parent="KinematicBody7"]
+
+[node name="timer" type="Timer" parent="KinematicBody7/explosion"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="CollisionShape" parent="KinematicBody7/explosion"]
+shape = SubResource( 36 )
